@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <title><%= bookcase.name || global.config.title %></title>
+    <% include ../common/public.ejs %>
+    <link rel="stylesheet" href="//cdn.bootcss.com/weui/1.1.1/style/weui.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/jquery-weui/1.0.1/css/jquery-weui.min.css">
+    <style>
+
+        body{
+            background: #eeeeee;
+        }
+        .container{
+            padding:20px;
+            box-sizing: border-box;
+            width: 95%;
+            background-color: white;
+            height: auto;
+            margin-top: 15%;
+            border-radius: 10px;
+            border: solid 1px #bdbdbd;
+        }
+        .m_header{
+            height: 175px;
+            position: relative;
+        }
+        .title{
+            position: absolute;
+            bottom: 0px;
+            left: 0px;
+            right: 0px;
+            height: 60px;
+            padding: 5px;
+            opacity: 0.8;
+            color: white;
+            background-color: black;
+        }
+        .weui-media-box {
+            padding: 0px;
+        }
+        .weui-media-box__thumb{
+            min-height: 60px;
+            position: relative;
+            top: 10%;
+            margin-left: 10px;
+
+
+        }
+        a + a{
+        border-top:solid 1px #d3d3d3;
+        }
+        .detailTitle{
+            font-size: 1.1em;
+            color: grey;
+            padding-bottom: 10px;
+        }
+        .readAll{
+            border-top: solid 1px gainsboro;
+            height: 50px;
+            line-height: 50px;
+            color: grey;
+            font-size: 1.1em;
+        }
+
+    </style>
+    <link href="<%= global.config.path.publicPath %>/libs/jquery-file-upload/css/jquery.fileupload.css" rel="stylesheet">
+    <link href="<%= global.config.path.publicPath %>/libs/uedit/themes/default/css/umeditor.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+<link rel="stylesheet" href="//cdn.bootcss.com/weui/1.1.1/style/weui.min.css">
+<link rel="stylesheet" href="//cdn.bootcss.com/jquery-weui/1.0.1/css/jquery-weui.min.css">
+<div class="container">
+    <div class="weui-panel weui-panel_access"  style="border: none">
+
+        <%if(articalList.length!=0){
+            let list =  articalList
+        %>
+        <%if (articalList.length==1){%>
+        <%let time = new Date(list[0].time).toLocaleDateString()
+        %>
+        <div class="detailTitle" style="border: none"><%=list[0].name%></div>
+        <div class="detailTitle" style="border: none"><%=time%></div>
+        <div  class="m_header" >
+
+            <a href="<%=list[0].thirdUrl || (global.config.path.hostname + '/fengqi/article/articleView/'+list[0].code) %>"  style="border: none">
+                <div class="m_header" style="background: url(<%=global.config.path.hostname + global.config.path.publicUploadPath + list[0].img.filePath%>) no-repeat;background-size: 100%;background-position-y: 50%;">
+                </div>
+            </a>
+        </div>
+        <div class="detailTitle "  style="border: none"><%=list[0].summary%></div>
+        <div style=""  class="readAll">
+                阅读全文
+                <div style="float: right">
+                    <img src="<%=global.config.path.publicPath%>/custom/images/more.png" alt="" style="width: 30px">
+                </div>
+        </div>
+       
+
+
+        <%}else{%>
+        <div class="weui-panel__bd">
+            <a href="<%=list[0].thirdUrl || (global.config.path.hostname + '/fengqi/article/articleView/'+list[0].code)%>" >
+            <div class="m_header" style="background: url(<%=`${global.config.path.hostname + global.config.path.publicUploadPath + list[0].img.filePath}`%>) no-repeat;background-size:100% 100%">
+                <div class="title"><%=list[0].name%></div>
+            </div>
+            </a>
+            <%for(let i=1;i<list.length;i++){%>
+            <a style="margin-top:10px;min-height:60px; padding: 0px;" href="<%=list[i].thirdUrl || (global.config.path.hostname + '/fengqi/article/articleView/'+list[i].code )%>" class="weui-media-box weui-media-box_appmsg">
+                <div class="weui-media-box__bd">
+                    <h4 class="weui-media-box__title"><%=list[i].name%></h4>
+                </div>
+                <div class="weui-media-box__hd">
+                    <img class="weui-media-box__thumb" src="<%=`${global.config.path.hostname + global.config.path.publicUploadPath + list[i].img.filePath}`%>">
+                </div>
+            </a>
+            <%}%>
+        </div>
+        <%}%>
+
+        <%}else {%>
+        <div>暂时没有文章信息，快来添加吧:)</div>
+        <%}%>
+    </div>
+
+
+</div>
+
+<script src="//cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/jquery-weui/1.0.1/js/jquery-weui.min.js"></script>
+
+<script src="<%= global.config.path.publicPath %>/libs/jquery-file-upload/js/vendor/jquery.ui.widget.js"></script>
+<script src="<%= global.config.path.publicPath %>/libs/jquery-file-upload/js/jquery.fileupload.js"></script>
+</body>
+</html>

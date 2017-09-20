@@ -19,3 +19,12 @@
 .inline-block{
   display: inline-block !important;
 }
+
+//文字不换行
+.textNowrap{
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: 100%;
+  display: inline-block;
+}

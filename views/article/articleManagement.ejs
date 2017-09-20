@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <% include ../common/meta.ejs %>
+    <% include ../common/public.ejs %>
+</head>
+<body>
+<% include ../common/header.ejs %>
+
+<div class="container page-content">
+    <div class="page-header">
+        <h1>
+            文章管理
+            <small id="parseInfo">
+
+            </small>
+        </h1>
+        <div class="operationButton">
+            <button class="btn btn-default btn-primary" id="addData">
+                <span class="glyphicon glyphicon-plus"></span> 添加
+            </button>
+            <button class="btn btn-default btn-warning" id="editDate">
+                <span class="glyphicon glyphicon-pencil"></span> 修改
+            </button>
+            <button class="btn btn-default btn-danger" id="removeDate">
+                <span class="glyphicon glyphicon-trash"></span> 删除
+            </button>
+        </div>
+    </div>
+
+    <div class="queryCondition">
+        <form class="form-horizontal query-form" id="queryConditionForm">
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">名称</label>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" placeholder="根据名称查询" name="name_like" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <button class="btn btn-default btn-query" type="submit">
+                        搜索
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div id="datalist"></div>
+</div>
+
+<div class="default-hidden">
+    <!------------------------------------------ edit form modal ------------------------------------------>
+    <form class="form-horizontal edit-form" id="edit-form">
+        
+        
+        <div class="form-group">
+            <label class="col-md-3 control-label">名称</label>
+            <div class="col-md-7">
+                <input class="form-control" name="name" type="text" />
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label class="col-md-3 control-label">language</label>
+            <div class="col-md-7">
+                <input class="form-control" name="language" type="text" />
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label class="col-md-3 control-label">sort</label>
+            <div class="col-md-7">
+                <input class="form-control" name="sort" type="text" />
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label class="col-md-3 control-label">time</label>
+            <div class="col-md-7">
+                <input class="form-control" name="time" type="text" />
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label class="col-md-3 control-label">author</label>
+            <div class="col-md-7">
+                <input class="form-control" name="author" type="text" />
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label class="col-md-3 control-label">effectiveTime</label>
+            <div class="col-md-7">
+                <input class="form-control" name="effectiveTime" type="text" />
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label class="col-md-3 control-label">summary</label>
+            <div class="col-md-7">
+                <input class="form-control" name="summary" type="text" />
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label class="col-md-3 control-label">图片</label>
+            <div class="col-md-7">
+                <input class="form-control" name="img" type="text" />
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label class="col-md-3 control-label">content</label>
+            <div class="col-md-7">
+                <input class="form-control" name="content" type="text" />
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label class="col-md-3 control-label">bookcase</label>
+            <div class="col-md-7">
+                <input class="form-control" name="bookcase" type="text" />
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label class="col-md-3 control-label">officialAccount</label>
+            <div class="col-md-7">
+                <input class="form-control" name="officialAccount" type="text" />
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label class="col-md-3 control-label">状态</label>
+            <div class="col-md-7">
+                <input class="form-control" name="state" type="text" />
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label class="col-md-3 control-label">创建时间</label>
+            <div class="col-md-7">
+                <input class="form-control" name="createTime" type="text" />
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label class="col-md-3 control-label">创建人</label>
+            <div class="col-md-7">
+                <input class="form-control" name="creater" type="text" />
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label class="col-md-3 control-label">更新时间</label>
+            <div class="col-md-7">
+                <input class="form-control" name="updateTime" type="text" />
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label class="col-md-3 control-label">更新人</label>
+            <div class="col-md-7">
+                <input class="form-control" name="updater" type="text" />
+            </div>
+        </div>
+        
+    </form>
+    <div id="edit_form_footer">
+        <button type="button" class="btn btn-primary btn-small" id="edit_form_save">保存</button>
+        <button type="button" class="btn btn-default btn-small dol-hideModal" id="edit_form_cancel">取消</button>
+    </div>
+
+
+    <!------------------------------------------ detail modal ------------------------------------------>
+    <form class="form-horizontal detail-form" id="detail-form">
+        
+        <div class="form-group">
+            <label class="col-md-3 control-label">名称</label>
+            <div class="col-md-7">
+                <p class="form-control-static" name="name"></p>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label class="col-md-3 control-label">language</label>
+            <div class="col-md-7">
+                <p class="form-control-static" name="language"></p>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label class="col-md-3 control-label">sort</label>
+            <div class="col-md-7">
+                <p class="form-control-static" name="sort"></p>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label class="col-md-3 control-label">time</label>
+            <div class="col-md-7">
+                <p class="form-control-static" name="time"></p>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label class="col-md-3 control-label">author</label>
+            <div class="col-md-7">
+                <p class="form-control-static" name="author"></p>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label class="col-md-3 control-label">effectiveTime</label>
+            <div class="col-md-7">
+                <p class="form-control-static" name="effectiveTime"></p>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label class="col-md-3 control-label">summary</label>
+            <div class="col-md-7">
+                <p class="form-control-static" name="summary"></p>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label class="col-md-3 control-label">图片</label>
+            <div class="col-md-7">
+                <p class="form-control-static" name="img"></p>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label class="col-md-3 control-label">content</label>
+            <div class="col-md-7">
+                <p class="form-control-static" name="content"></p>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label class="col-md-3 control-label">bookcase</label>
+            <div class="col-md-7">
+                <p class="form-control-static" name="bookcase"></p>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label class="col-md-3 control-label">officialAccount</label>
+            <div class="col-md-7">
+                <p class="form-control-static" name="officialAccount"></p>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label class="col-md-3 control-label">状态</label>
+            <div class="col-md-7">
+                <p class="form-control-static" name="state"></p>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label class="col-md-3 control-label">创建时间</label>
+            <div class="col-md-7">
+                <p class="form-control-static" name="createTime"></p>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label class="col-md-3 control-label">创建人</label>
+            <div class="col-md-7">
+                <p class="form-control-static" name="creater"></p>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label class="col-md-3 control-label">更新时间</label>
+            <div class="col-md-7">
+                <p class="form-control-static" name="updateTime"></p>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label class="col-md-3 control-label">更新人</label>
+            <div class="col-md-7">
+                <p class="form-control-static" name="updater"></p>
+            </div>
+        </div>
+        
+    </form>
+</div>
+
+<% include ../common/footer.ejs %>
+<% include ../common/script.ejs %>
+
+
+</body>
+</html>

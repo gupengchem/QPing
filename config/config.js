@@ -34,6 +34,7 @@ module.exports = (function () {
             path : "/libs"                        //locale
         }
     });
+    config.path.imagePath = `${config.path.hostname}${config.path.publicUploadPath}`;
 
     //system plugin
     Object.assign(config, {

@@ -5,6 +5,8 @@ Dolphin.defaults.mockFlag = true;
 Dolphin.path.contextPath = "";
 Dolphin.path.publicPath = "";
 Dolphin.path.uploadPath = Dolphin.path.publicPath + "/uploadFiles";
+Dolphin.path.domain = "http://localhost:18080";
+
 Dolphin.defaults.url.viewPrefix = "/view";
 Dolphin.defaults.ajax.requestHeader = $.extend(Dolphin.defaults.ajax.requestHeader, {
     "ajax-flag" : true

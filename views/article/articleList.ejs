@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <% include ../common/meta.ejs %>
+    <% include ../common/public.ejs %>
+    <style>
+        #dataList table{
+            table-layout:fixed;
+        }
+    </style>
+</head>
+<body>
+<% include ../common/header.ejs %>
+<div class="container">
+    <div class="row">
+        <% include ../common/menu.ejs %>
+
+        <div id="content" class="col-lg-10 col-sm-11">
+            <div class="page-header">
+                <h1>
+                    文章管理
+                    <small id="parseInfo">
+
+                    </small>
+                </h1>
+                <div class="operationButton">
+                    <button class="btn btn-default btn-primary" id="addData">
+                        <span class="glyphicon glyphicon-plus"></span> 添加根节点
+                    </button>
+                    <button class="btn btn-default btn-info" id="addChildrenData">
+                        <span class="glyphicon glyphicon-plus"></span> 添加子节点
+                    </button>
+                    <button class="btn btn-default btn-default" id="editDate">
+                        <span class="glyphicon glyphicon-pencil"></span> 修改
+                    </button>
+                    <button class="btn btn-default btn-default" id="removeDate">
+                        <span class="glyphicon glyphicon-trash"></span> 删除
+                    </button>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <div class="panel-title">目录</div>
+                        </div>
+                        <div class="panel-body">
+                            <div id="dataTree"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <div class="panel-title">目录信息</div>
+                        </div>
+                        <div class="panel-body">
+                            <form class="form-horizontal detail-form" id="detail-form">
+                                <div class="row">
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="col-md-4 control-label">名称</label>
+                                            <div class="col-md-8">
+                                                <p class="form-control-static" name="name"></p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="col-md-4 control-label">编码</label>
+                                            <div class="col-md-8">
+                                                <p class="form-control-static" name="code"></p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="col-md-4 control-label">优先级</label>
+                                            <div class="col-md-8">
+                                                <p class="form-control-static" name="sort"></p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="col-md-4 control-label">备注</label>
+                                            <div class="col-md-8">
+                                                <p class="form-control-static" name="remark"></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 " >
+                                        <div class="form-group">
+                                            <label class="col-md-2 control-label ">
+                                                列表链接
+                                            </label>
+                                            <div class="col-md-10" style="padding: 0px">
+                                                <div class="col-md-10">
+                                                    <a class=" form-control-static textNowrap"  id="articalUrl"></a>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <button type="button" class="btn btn-primary  btn-sm" id="copys" style="display: none">复制</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+
+                    <div class="panel panel-success">
+                        <div class="panel-heading">
+                            <div class="panel-title">
+                                <span class="glyphicon glyphicon-list-alt"></span>
+                                文章列表
+                                <div class="operationButton">
+                                    <div class="btn-group" role="group">
+                                        <button type="button" class="btn btn-primary" id="addArticleButton" disabled>添加</button>
+                                        <button type="button" class="btn btn-info" id="updateArticleButton" disabled>修改</button>
+                                        <button type="button" class="btn btn-default" id="removeArticleButton" disabled>删除</button>
+                                    </div>
+                                    <!--<button class="btn btn-default btn-default" id="receivedButton" disabled>-->
+                                    <!--<span class="glyphicon glyphicon-road"></span> 确认收货-->
+                                    <!--</button>-->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-body padding-0">
+                            <div id="dataList"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="default-hidden">
+    <!------------------------------------------ edit form modal ------------------------------------------>
+    <form class="form-horizontal edit-form" id="edit-form">
+        
+        
+        <div class="form-group">
+            <label class="col-md-4 control-label">名称</label>
+            <div class="col-md-8">
+                
+                <input class="form-control" name="name" type="text" />
+                
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label class="col-md-4 control-label">编码</label>
+            <div class="col-md-8">
+                <input class="form-control" name="code" type="text" />
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label class="col-md-4 control-label">优先级</label>
+            <div class="col-md-8">
+                
+                <input class="form-control" name="sort" type="text" />
+                
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label class="col-md-4 control-label">备注</label>
+            <div class="col-md-8">
+                <input class="form-control" name="remark" type="text" />
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label class="col-md-4 control-label">上级节点</label>
+            <div class="col-md-8">
+                <input class="form-control" name="parentName" type="text" readonly />
+                <input class="form-control" name="parent" type="hidden" />
+            </div>
+        </div>
+    </form>
+    <div id="edit_form_footer">
+        <button type="button" class="btn btn-primary btn-small" id="edit_form_save">保存</button>
+        <button type="button" class="btn btn-default btn-small dol-hideModal" id="edit_form_cancel">取消</button>
+    </div>
+</div>
+
+
+
+<% include ../common/footer.ejs %>
+<% include ../common/script.ejs %>
+<script src="<%= global.config.path.publicPath %>/libs/clipboard/clipboard.min.js"></script>
+</body>
+</html>

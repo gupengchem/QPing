@@ -2801,6 +2801,9 @@
                     'rowspan': column.rowspan,
                     'colspan': column.colspan
                 }).html(column.title || column.code).appendTo(panel);
+                if(column.width){
+                    th.css('width', column.width);
+                }
                 if(column.hidden){
                     th.addClass('hiddenCol');
                 }

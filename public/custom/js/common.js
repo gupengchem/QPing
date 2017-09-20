@@ -1,6 +1,10 @@
 $(function () {
+    //通用按钮
     $('.dol-hideModal').click(function () {
         $(this).closest('.modal').modal('hide');
+    });
+    $('.dol-goBack').click(function () {
+        history.go(-1);
     });
 
     //修改密码

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= (body.bookcase && body.bookcase.name) || global.config.title %></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <style>
+        h1{
+            margin-bottom: 5px;
+            font-weight: 400;
+        }
+        .info{
+            margin-right: 10px;
+            color: #999999;
+        }
+        .info.author{
+            color: #5b8ecb;
+        }
+        .content{
+            color:#333333;
+        }
+        img{
+            max-width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+<% if(body.name){ %>
+<h1><%=body.name%></h1>
+
+<span class="info"><%=global.tool.dateFormatter(body.time, 'yyyy-MM-dd') %></span><span class="info"><%= (body.bookcase && body.bookcase.name) %></span><span class="info author"><%= body.author %></span>
+<div class="content">
+    <%-body.content %>
+</div>
+<% }else{ %>
+抱歉，此文章已不存在。
+<% } %>
+</body>
+</html>

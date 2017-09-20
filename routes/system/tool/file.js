@@ -85,7 +85,7 @@ router.post('/save', function(req, res, next) {
             }));
         }else{
             let data = {}, file, fileUrl;
-            file = files.media;
+            file = files.media || files.upfile;
 
             data.name = file.name;
             data.filePath = '/'+file.path.split('/').pop();
@@ -96,12 +96,27 @@ router.post('/save', function(req, res, next) {
                 data.type = type;
                 data.filePath = '/' + type + data.filePath;
             }
-
-            service.save(req.curUser, data).then(
-                data => res.send(resUtil.success({data:data})),
-                err => res.send(resUtil.error())
-            );
-
+            if(data.type === 'editor'){
+                let result = "{\"name\":\""+ data.name +"\", \"originalName\": \""+ data.name +"\"" +
+                    ", \"size\": "+ data.fileSize +", \"state\": \"SUCCESS\"" +
+                    ", \"type\": \""+ data.fileType +"\"" +
+                    ", \"url\": \""+global.config.path.imagePath+data.filePath+"\"}";
+                //var result = {
+                //    name:fileName,
+                //    originalName:fileName,
+                //    size:files.upfile.size,
+                //    state:"SUCCESS",
+                //    type:files.upfile.type,
+                //    url:'/uploadFiles/images/icon_tx.png'
+                //};
+                res.set('Content-Type', 'text/html;charset=utf-8');
+                res.send(result);
+            }else {
+                service.save(req.curUser, data).then(
+                    data => res.send(resUtil.success({data:data})),
+                    err => res.send(resUtil.error())
+                );
+            }
         }
     });
 });
