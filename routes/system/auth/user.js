@@ -59,11 +59,10 @@ router.post('/save/:id', function(req, res, next) {
 //修改密码
 router.post('/changePwd', function(req, res, next) {
     let data = req.body;
-    let curUser = req.session.userData;
 
-    service.findById(curUser, curUser._id).then(user => {
+    service.findById(req.curUser, req.curUser._id).then(user => {
         if(user.password == data.oldPassword){
-            service.updateById(curUser, curUser._id, {password: data.newPassword}).then(
+            service.updateById(req.curUser, req.curUser._id, {password: data.newPassword}).then(
                 data => res.send(resUtil.success()),
                 err => res.send(resUtil.error())
             )
