@@ -20,6 +20,7 @@ const schema = new Schema({
     code: {type: String, unique: true},             //编码
     password : { type: String },                    //密码
     phone : { type: Number },                       //手机号
+    gender : { type: String },                      //性别
     email: {type: String},                          //邮箱
     type : { type: String },                        //会员类型
     icon : { type: String },                        //头像
