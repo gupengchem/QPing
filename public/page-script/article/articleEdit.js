@@ -79,7 +79,6 @@ page.initElement = function () {
                     $("#imageBody").attr("src", Dolphin.path.uploadPath+reData.data.img.filePath).show();
                     thisPage.editForm.find('input[name="img"]').val(reData.data.img._id);
                 }
-                thisPage.editForm.find(`[name="tags"]`).val(reData.data.tags);
                 if (reData.data.content)
                     um.setContent(reData.data.content);
             }
