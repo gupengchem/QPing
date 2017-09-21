@@ -37,7 +37,7 @@ router.get('/find', function(req, res, next) {
     condition = reqUtil.formatCondition(condition);
 
     service
-        .find(req.session.userData, condition)
+        .find(req.session.userData, condition, 'img')
         .then(function (data) {
             res.send(resUtil.success({rows:data}));
         }, function (err) {
