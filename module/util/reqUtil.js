@@ -10,7 +10,7 @@ util.formatCondition = function(condition){
     let key;
     delete condition._;
     for(key in condition){
-        if(condition[key] == "" || condition[key] == null){
+        if(condition[key] === "" || condition[key] === null){
             delete condition[key];
         }else if(condition[key] == "-"){
             condition[key] = "";
