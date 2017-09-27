@@ -12,7 +12,7 @@ util.formatCondition = function(condition){
     for(key in condition){
         if(condition[key] === "" || condition[key] === null){
             delete condition[key];
-        }else if(condition[key] == "-"){
+        }else if(condition[key] === "-"){
             condition[key] = "";
         }else if(/_like$/.test(key)){
             condition[key.replace(/_like$/, '')] = {'$regex': condition[key]};
