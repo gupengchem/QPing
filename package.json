@@ -27,7 +27,7 @@
     "md5": "^2.2.1",
     "mongodb": "^2.2.26",
     "mongoose": "^4.9.9",
-    "node-qr-image": "^0.0.1",
+    "qr-image": "^3.2.0",
     "node-schedule" : "^1.2.3",
     "node-xlsx": "^0.7.4",
     "qrcode": "^0.8.2",
