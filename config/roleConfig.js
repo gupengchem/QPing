@@ -11,6 +11,8 @@ module.exports = [
         "state" : 1,
         "menus" : [
             "33ee29c8-a240-43f0-abcd-4ec9c2142e65",
+            "f327e651-b3ee-41bf-b42b-b3f8817650f3",
+            "61073d72-3e9f-4ffc-9466-eb6fda3d48d6",
             "7d4f7f66-9cbb-4565-a10d-6d49d7dc05f0",
             "8dbceeab-5322-4b51-ac14-7489cbb13943",
             "fa0e2c1a-8f14-4243-82e8-0f45c6dff316",

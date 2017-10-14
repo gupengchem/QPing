@@ -209,4 +209,31 @@ module.exports = [
         "state" : 1,
         "__type" : "leaf",
     },
+
+
+    /* 17 */
+    {
+        "_id" : "f327e651-b3ee-41bf-b42b-b3f8817650f3",
+        "name" : "文章管理",
+        "code" : "Article",
+        "link" : "/view/article/articleList",
+        "icon" : "fa-book",
+        "sort" : 20,
+        "parent" : "",
+        "state" : 1,
+        "__type" : "folder",
+    },
+
+    /* 18 */
+    {
+        "_id" : "61073d72-3e9f-4ffc-9466-eb6fda3d48d6",
+        "name" : "文章列表",
+        "code" : "ArticleList",
+        "link" : "/view/article/articleList",
+        "icon" : "fa-file-text-o",
+        "sort" : 10,
+        "parent" : "f327e651-b3ee-41bf-b42b-b3f8817650f3",
+        "state" : 1,
+        "__type" : "leaf",
+    },
 ];
