@@ -21,6 +21,7 @@
 		multiple : true,									//是否多选
 		clickForCheck : true,								//单击行时是否切换选择状态
 		width : null,										//列表总宽度
+        tableWidth : null,								    //表格宽度
 		height : null,										//列表总高度
 
 		title : null, 										//列表标题
@@ -121,6 +122,11 @@
 					'width': this.opts.width
 				});
 			}
+            if(this.opts.tableWidth){
+                table.css({
+                    'width': this.opts.tableWidth
+                });
+            }
 			if(this.opts.height){
 				div.css('height', this.opts.height);
 			}

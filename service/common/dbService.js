@@ -396,6 +396,44 @@ class CommonService {
 
         return promise;
     }
+
+
+    /**
+     * 聚合
+     * @param curUser
+     * @param pip
+     * @return {Promise}
+     */
+    aggregate(curUser, pip = []){
+        return new Promise((resolve, reject) => {
+            this.opts.model.aggregate(pip, (err, result) => {
+                if(err){
+                    reject(err);
+                }else{
+                    resolve(result);
+                }
+            })
+        });
+    }
+
+    /**
+     * populate
+     * @param curUser
+     * @param data
+     * @param options
+     * @return {Promise}
+     */
+    populate(curUser, data, options = []){
+        return new Promise((resolve, reject) => {
+            this.opts.model.populate(data, options, (err, data) => {
+                if(err){
+                    reject(err);
+                }else{
+                    resolve(data);
+                }
+            });
+        });
+    }
 }
 
 module.exports = CommonService;
