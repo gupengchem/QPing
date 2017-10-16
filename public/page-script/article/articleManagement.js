@@ -153,7 +153,7 @@ page.initEvent = function () {
     });
 
     //修改
-    $('#editDate').click(function () {
+    $('#editData').click(function () {
         let checkedData = thisPage.list.getChecked();
         if(checkedData.length != 1){
             Dolphin.alert("请选择一条数据");
@@ -165,7 +165,7 @@ page.initEvent = function () {
     });
 
     //删除
-    $('#removeDate').click(function () {
+    $('#removeData').click(function () {
         let checkedData = thisPage.list.getChecked(), ids=[];
         if(checkedData.length == 0){
             Dolphin.alert("请至少选择一条数据");

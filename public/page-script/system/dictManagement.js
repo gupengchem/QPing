@@ -98,7 +98,7 @@ page.initEvent = function () {
         thisPage._id = "";
         thisPage.editModal.modal('show');
     });
-    $('#editDate').click(function () {
+    $('#editData').click(function () {
         let checkedData = thisPage.list.getChecked();
         if(checkedData.length != 1){
             Dolphin.alert("请选择一条数据");
@@ -111,7 +111,7 @@ page.initEvent = function () {
             thisPage.editModal.modal('show');
         }
     });
-    $('#removeDate').click(function () {
+    $('#removeData').click(function () {
         let checkedData = thisPage.list.getChecked();
         if(checkedData.length != 1){
             Dolphin.alert("请选择一条数据");

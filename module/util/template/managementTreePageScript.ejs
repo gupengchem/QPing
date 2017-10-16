@@ -120,7 +120,7 @@ page.initEvent = function () {
     });
 
     //修改
-    $('#editDate').click(function () {
+    $('#editData').click(function () {
         let checkedData = thisPage.tree.getChecked();
         if(checkedData.length != 1){
             Dolphin.alert("请选择一条数据");
@@ -137,7 +137,7 @@ page.initEvent = function () {
     });
 
     //删除
-    $('#removeDate').click(function () {
+    $('#removeData').click(function () {
         let checkedData = thisPage.tree.getChecked();
         if(checkedData.length != 1){
             Dolphin.alert("请选择一条数据");
