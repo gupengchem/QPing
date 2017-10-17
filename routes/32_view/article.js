@@ -6,7 +6,6 @@ const extend = require('extend');
 const url = require('url');
 const request = require('request');
 
-const qr = require('node-qr-image');
 const resUtil = require("../../module/util/resUtil");
 
 const ArticleService = require("../../service/article/ArticleService");
