@@ -11,7 +11,7 @@ const resUtil = require("../module/util/resUtil");
 /* GET home page. */
 router.get('/', function(req, res, next) {
     if(req.session.userData){
-        res.redirect('/view/index');
+        res.redirect('/');
     }else{
         req.endType = "";
         // req.endType = global.tool.endType(req.headers['user-agent']);
@@ -79,7 +79,7 @@ router.post('/', function(req, res, next){
 
 router.get('/logout', function(req, res, next){
     req.session.destroy(function(err) {
-        res.redirect(global.config.path.contextPath + '/view/index');
+        res.redirect(global.config.path.contextPath + '/');
     });
 });
 
