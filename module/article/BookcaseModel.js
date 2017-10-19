@@ -17,7 +17,7 @@ const schema = new Schema({
     sort : { type: Number },                        //优先级
     remark : { type: String },                      //备注
 
-    parent : { type: String, ref: 'Bookcase' },     //父级节点
+    parent : { type: String, ref: 't_Bookcase' },     //父级节点
 
     tenant : { type: String, ref : "M_Tenant" },    //所属租户
     state : { type: Number, default : 1},           //状态
@@ -27,6 +27,6 @@ const schema = new Schema({
     updater : { type: String, ref : "User", default: config.dbUser.robot._id}         //最后更新者
 });
 
-const Model = mongoose.model('Bookcase',schema);
+const Model = mongoose.model('t_Bookcase',schema);
 
 module.exports = Model;

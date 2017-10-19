@@ -25,7 +25,7 @@ const schema = new Schema({
     content : { type: String },                     //内容
     thirdUrl : { type: String },                     //新增链接
 
-    bookcase : { type: String, ref : "Bookcase" },  //所属目录
+    bookcase : { type: String, ref : "t_Bookcase" },  //所属目录
     tags : [{ type: String, ref : "tags" }],        //所属标签
 
     tenant : { type: String, ref : "M_Tenant" },    //所属租户
@@ -37,6 +37,6 @@ const schema = new Schema({
 });
 schema.index({code: 1});
 
-const Model = mongoose.model('Article',schema);
+const Model = mongoose.model('t_Article',schema);
 
 module.exports = Model;
