@@ -239,7 +239,7 @@ page.initEvent = function () {
                     callback : function () {
                         thisPage._id = reData.data._id;
                         thisPage.tree.reload();
-                        thisPage.showDetail(reData.data._id);
+                        thisPage.showDetail(reData.data);
                         thisPage.editModal.modal('hide');
                     }
                 });
