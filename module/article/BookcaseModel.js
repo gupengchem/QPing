@@ -17,16 +17,16 @@ const schema = new Schema({
     sort : { type: Number },                        //优先级
     remark : { type: String },                      //备注
 
-    parent : { type: String, ref: 't_Bookcase' },     //父级节点
+    parent : { type: String, ref: 'T_Bookcase' },     //父级节点
 
     tenant : { type: String, ref : "M_Tenant" },    //所属租户
     state : { type: Number, default : 1},           //状态
     createTime: {type: Date, default: Date.now},    //创建时间
-    creater: {type: String, ref : "User", default: config.dbUser.robot._id},          //创建者
+    creater: {type: String, ref : "M_User", default: config.dbUser.robot._id},          //创建者
     updateTime : { type: Date, default: Date.now},  //最后更新时间
-    updater : { type: String, ref : "User", default: config.dbUser.robot._id}         //最后更新者
+    updater : { type: String, ref : "M_User", default: config.dbUser.robot._id}         //最后更新者
 });
 
-const Model = mongoose.model('t_Bookcase',schema);
+const Model = mongoose.model('T_Bookcase',schema);
 
 module.exports = Model;

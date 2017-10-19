@@ -25,18 +25,17 @@ const schema = new Schema({
     content : { type: String },                     //内容
     thirdUrl : { type: String },                     //新增链接
 
-    bookcase : { type: String, ref : "t_Bookcase" },  //所属目录
-    tags : [{ type: String, ref : "tags" }],        //所属标签
+    bookcase : { type: String, ref : "T_Bookcase" },  //所属目录
 
     tenant : { type: String, ref : "M_Tenant" },    //所属租户
     state : { type: Number, default : 1},           //状态
     createTime: {type: Date, default: Date.now},    //创建时间
-    creater: {type: String, ref : "User", default: config.dbUser.robot._id},          //创建者
+    creater: {type: String, ref : "M_User", default: config.dbUser.robot._id},          //创建者
     updateTime : { type: Date, default: Date.now},  //最后更新时间
-    updater : { type: String, ref : "User", default: config.dbUser.robot._id}         //最后更新者
+    updater : { type: String, ref : "M_User", default: config.dbUser.robot._id}         //最后更新者
 });
 schema.index({code: 1});
 
-const Model = mongoose.model('t_Article',schema);
+const Model = mongoose.model('T_Article',schema);
 
 module.exports = Model;
