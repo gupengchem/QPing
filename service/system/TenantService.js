@@ -12,10 +12,10 @@ const Model = require("../../module/system/TenantModel");
 
 const defaultParams = {
     model : Model,
-    findCondition: (curUser) => {
+    findCondition: (curUser, thisService) => {
         return { state: 1 }
     },
-    saveExtend: (curUser) => {
+    saveExtend: (curUser, thisService) => {
         return {}
     }
 };

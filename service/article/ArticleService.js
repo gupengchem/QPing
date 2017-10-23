@@ -8,10 +8,6 @@ const Model = require("../../module/article/ArticleModel");
 const defaultParams = {
     model : Model,
     basePath: '/article',
-    findCondition: (curUser) => {
-        let condition = { state: 1 };
-        return condition;
-    },
 };
 
 class ModuleService extends CommonService{

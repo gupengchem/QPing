@@ -14,10 +14,10 @@ const SYSTEM_CONSTANT = require('../../config/systemConstant');
 
 const defaultParams = {
     model : Model,
-    findCondition: (curUser) => {
+    findCondition: (curUser, thisService) => {
         return { state: 1 }
     },
-    saveExtend: (curUser) => {
+    saveExtend: (curUser, thisService) => {
         return {}
     }
 };

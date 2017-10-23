@@ -12,11 +12,11 @@ const Model = require("../../../module/system/auth/UserModel");
 
 const defaultParams = {
     model : Model,
-    findCondition: (curUser) => {
+    findCondition: (curUser, thisService) => {
         let condition = { state: 1 };
         return condition;
     },
-    saveExtend: (curUser) => {
+    saveExtend: (curUser, thisService) => {
         return {}
     }
 };

@@ -82,7 +82,7 @@ class CommonService {
 
         skip = pageSize * pageNumber;
         size = Number(pageSize);
-        condition = extend({}, this.opts.findCondition(curUser), condition);
+        condition = extend({}, this.opts.findCondition(curUser, this), condition);
 
         promise = new Promise(function (resolve, reject) {
             thisService.opts.model.count(condition).exec(function (err, count) {
@@ -172,7 +172,7 @@ class CommonService {
     findOne(curUser = null, condition = {}, populate = "", fields = null) {
         let thisService = this, promise;
 
-        condition = Object.assign({}, this.opts.findCondition(curUser), condition);
+        condition = Object.assign({}, this.opts.findCondition(curUser, this), condition);
 
         promise = new Promise(function (resolve, reject) {
             let exec = thisService.opts.model.findOne(condition);
@@ -215,7 +215,7 @@ class CommonService {
             data.creater = curUser._id;
             data.updater = curUser._id;
         }
-        data = Object.assign({}, this.opts.saveExtend(curUser), data);
+        data = Object.assign({}, this.opts.findCondition(curUser, this), data);
 
         model = new thisService.opts.model(data);
 
@@ -266,7 +266,7 @@ class CommonService {
      */
     remove(curUser = null, condition = {}) {
         const thisService = this;
-        condition = extend({}, this.opts.findCondition(curUser), condition);
+        condition = extend({}, this.opts.findCondition(curUser, this), condition);
 
         let promise;
         promise = new Promise(function (resolve, reject) {
@@ -319,7 +319,7 @@ class CommonService {
         const thisService = this;
         let promise;
 
-        condition = extend({}, this.opts.findCondition(curUser), condition);
+        condition = extend({}, this.opts.findCondition(curUser, this), condition);
         if(curUser){
             data.updater = curUser._id || config.dbUser.robot._id;
         }
@@ -380,7 +380,7 @@ class CommonService {
      */
     count(curUser = null, condition = {}) {
         let thisService = this, promise;
-        condition = extend({}, this.opts.findCondition(curUser), condition);
+        condition = extend({}, this.opts.findCondition(curUser, this), condition);
 
         promise = new Promise(function (resolve, reject) {
             thisService.opts.model.count(condition).exec(function (err, result) {
