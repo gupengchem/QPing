@@ -27,7 +27,7 @@ const schema = new Schema({
 
     bookcase : { type: String, ref : "T_Bookcase" },  //所属目录
 
-    tenant : { type: String, ref : "M_Tenant" },    //所属租户
+    tenant : { type: String, ref : "M_Tenant", default: config.dbUser.admin.tenant },    //所属租户
     state : { type: Number, default : 1},           //状态
     createTime: {type: Date, default: Date.now},    //创建时间
     creater: {type: String, ref : "M_User", default: config.dbUser.robot._id},          //创建者

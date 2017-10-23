@@ -27,7 +27,7 @@ const schema = new Schema({
     org: {type: String, ref : "M_Org" },           //所属组织
     role : { type: String, ref : "M_Role" },        //所属角色
 
-    tenant : { type: String, ref : "M_Tenant" },    //所属租户
+    tenant : { type: String, ref : "M_Tenant", default: config.dbUser.admin.tenant },    //所属租户
 
     state : { type: Number, default : 1},           //状态
     createTime: {type: Date, default: Date.now},    //创建时间

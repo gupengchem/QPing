@@ -34,7 +34,7 @@ const schema = new Schema({
     //other
     params: {type: Object},                         //自定义属性参数
 
-    tenant : { type: String, ref : "M_Tenant" },    //所属租户
+    tenant : { type: String, ref : "M_Tenant", default: config.dbUser.admin.tenant },    //所属租户
 
     state : { type: Number, default : 1},           //状态，是否删除
     createTime: {type: Date, default: Date.now},    //创建时间

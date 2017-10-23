@@ -26,7 +26,7 @@ const schema = new Schema({
 
     type : { type : String},                        //业务类型
 
-    tenant : { type: String, ref : "M_Tenant" },    //所属租户
+    tenant : { type: String, ref : "M_Tenant", default: config.dbUser.admin.tenant },    //所属租户
 
     state : { type: Number, default : 1},           //是否有效
     createTime: {type: Date, default: Date.now},    //创建时间

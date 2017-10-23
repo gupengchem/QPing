@@ -25,7 +25,7 @@ const schema = new Schema({
     parent : { type: String, ref: 'M_Org' },         //父级节点
     __type: {type: String, default : Constant.TREE_MODEL.LEAF},       //节点类型
 
-    tenant : { type: String, ref : "M_Tenant" },    //所属租户
+    tenant : { type: String, ref : "M_Tenant", default: config.dbUser.admin.tenant },    //所属租户
 
     state : { type: Number, default : 1},           //状态
     createTime: {type: Date, default: Date.now},    //创建时间
