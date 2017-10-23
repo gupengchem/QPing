@@ -9,10 +9,10 @@ const config = require("../../config/config");
 
 const defaultParams = {
     model: null,
-    findCondition: (curUser) => {
+    findCondition: (curUser, thisService) => {
         return { state: 1, tenant: curUser.tenant }
     },
-    saveExtend: (curUser) => {
+    saveExtend: (curUser, thisService) => {
         return { tenant: curUser.tenant }
     }
 };
@@ -33,7 +33,7 @@ class CommonService {
      */
     find(curUser = null, condition = {}, populate = "", sort = {updateTime: -1}, fields = null) {
         let thisService = this, promise;
-        condition = extend({}, this.opts.findCondition(curUser), condition);
+        condition = extend({}, this.opts.findCondition(curUser, this), condition);
 
         promise = new Promise(function (resolve, reject) {
             let exec = thisService.opts.model
